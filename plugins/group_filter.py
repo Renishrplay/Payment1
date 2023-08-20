@@ -373,7 +373,7 @@ async def manual_filters(client, message, text=False):
                     if fileid == "None":
                         if btn == "[]":
                             menukbd3 = await client.send_message(group_id, reply_text, disable_web_page_preview=True, reply_to_message_id=reply_id)
-                            await asyncio.sleep(60)
+                            await asyncio.sleep(50)
                             await menukbd3.delete()
                         else:
                             button = eval(btn)
@@ -384,7 +384,7 @@ async def manual_filters(client, message, text=False):
                                 reply_markup=InlineKeyboardMarkup(button),
                                 reply_to_message_id=reply_id
                             )
-                            await asyncio.sleep(60)
+                            await asyncio.sleep(50)
                             await menukbd2.delete()
                     elif btn == "[]":
                         menukbd1 = await client.send_cached_media(
@@ -393,7 +393,7 @@ async def manual_filters(client, message, text=False):
                             caption=reply_text or "",
                             reply_to_message_id=reply_id
                         )
-                        await asyncio.sleep(60)
+                        await asyncio.sleep(50)
                         await menukbd1.delete()
                     else:
                         button = eval(btn)
@@ -403,7 +403,7 @@ async def manual_filters(client, message, text=False):
                             reply_markup=InlineKeyboardMarkup(button),
                             reply_to_message_id=reply_id
                         )
-                        await asyncio.sleep(60)
+                        await asyncio.sleep(50)
                         await menukbd.delete()
                 except Exception as e:
                     logger.exception(e)
