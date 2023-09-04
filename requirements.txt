@@ -5,10 +5,10 @@ PyLeaves==1.0.2
 #--Main----#
 pyrogram>=2.0.30 
 aiofiles==22.1.0     
-aiohttp==3.8.3
+aiohttp
 tgcrypto==1.2.5
 requests
-bs4==0.0.1
+bs4
 
 #---database---#
 dnspython==2.3.0
