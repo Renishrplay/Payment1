@@ -34,7 +34,6 @@ wheel
 ujson
 wget
 pytz
-speedtest==0.0.1
 
 
 
