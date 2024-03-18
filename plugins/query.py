@@ -288,8 +288,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
      
       
- #   elif query.data.startswith("checksub"):
-   #     await ForceSub(client, query)
+    elif query.data.startswith("checksub"):
+        await ForceSub(client, query)
     #    ident, file_id = query.data.split("#")
    #     files_ = await get_file_details(file_id)
  #       if not files_:
