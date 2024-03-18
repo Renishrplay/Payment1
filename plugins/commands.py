@@ -60,11 +60,7 @@ async def start(client, message):
         )
         return
 
-    if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
-        if message.command[1] == "subscribe":
-            await ForceSub(client, message)
-
-        return
+    
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
             InlineKeyboardButton("➕️ 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ➕️", url=f"http://t.me/{temp.U_NAME}?startgroup=true")
@@ -88,12 +84,19 @@ async def start(client, message):
         )
         return
         
+    
     kk, file_id = message.command[1].split("_", 1) if "_" in message.command[1] else (False, False)
     pre = ('checksubp' if kk == 'filep' else 'checksub') if kk else False
 
     status = await ForceSub(client, message, file_id=file_id, mode=pre)
     if not status:
         return
+
+    data = message.command[1]
+    if not file_id:
+        file_id = data
+
+    
     data = message.command[1]
     try:
         pre, file_id = data.split('_', 1)
