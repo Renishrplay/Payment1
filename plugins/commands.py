@@ -73,9 +73,8 @@ async def start(client, message):
             ]
         ]
 
-        if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help", "start", "hehe"]:
-        if message.command[1] == "subscribe":
-            await ForceSub(client, message)
+    if message.command[1] == "subscribe":
+        await ForceSub(client, message)
 
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
