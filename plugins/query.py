@@ -5,7 +5,7 @@ from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidD
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
 from pyrogram import Client, filters, enums 
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
-
+from plugins.fsub import ForceSub
 
 from Script import script
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, make_inactive
@@ -242,18 +242,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if f_caption is None:
             f_caption = f"{files.file_name}"    
         try:                  
-            if AUTH_CHANNEL and not await is_subscribed(client, query):
-                return await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-            else:
-                await client.send_cached_media(
-                    chat_id=query.from_user.id,
-                    file_id=file_id,
-                    caption=f_caption,
-                    protect_content=True if ident == "pmfilep" else False                    
-                )                       
+            await ForceSub(client, query):
         except Exception as e:
             await query.answer(f"⚠️ Error {e}", show_alert=True)
-        
+                
     if query.data.startswith("file"):        
         ident, req, file_id = query.data.split("#")
         if BUTTON_LOCK:
@@ -276,7 +268,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if f_caption is None:
             f_caption = f"{files.file_name}"        
         try:
-            if AUTH_CHANNEL and not await is_subscribed(client, query):
+            if await ForceSub(client, query):
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             elif settings['botpm']:
