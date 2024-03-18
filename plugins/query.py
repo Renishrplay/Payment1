@@ -242,7 +242,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if f_caption is None:
             f_caption = f"{files.file_name}"    
         try:                  
-            await ForceSub(client, query):
+            await ForceSub(client, query)
         except Exception as e:
             await query.answer(f"⚠️ Error {e}", show_alert=True)
                 
