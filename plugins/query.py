@@ -268,10 +268,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if f_caption is None:
             f_caption = f"{files.file_name}"        
         try:
-            if await ForceSub(client, query):
-                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
-                return
-            elif settings['botpm']:
+            await ForceSub(client, query)
+            if settings['botpm']:
                 await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
                 return
             else:
@@ -291,9 +289,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
      
       
     elif query.data.startswith("checksub"):
-        if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("I Like Your Smartness, But Don't Be Oversmart Okay", show_alert=True)
-            return
+        await ForceSub(client, query)
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
