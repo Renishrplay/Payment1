@@ -1,14 +1,10 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# (c) @AlbertEinsteinTG
-
 import motor.motor_asyncio
-from info import REQ_CHANNEL, JOIN_REQS_DB
+from info import REQ_CHANNEL
 
 class JoinReqs:
 
     def __init__(self):
-        from info import JOIN_REQS_DB
+        from info import DATABASE_URI as JOIN_REQS_DB
         if JOIN_REQS_DB:
             self.client = motor.motor_asyncio.AsyncIOMotorClient(JOIN_REQS_DB)
             self.db = self.client["JoinReqs"]
