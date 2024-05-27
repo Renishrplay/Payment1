@@ -5,7 +5,7 @@ from pyrogram.raw.all import layer
 #from Telethroid import started_telethroid
 from database.ia_filterdb import Media
 from database.users_chats_db import db
-from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, PORT, WEBHOOK
+from info import SESSION, API_ID, API_HASH, BOT_TOKEN, LOG_CHANNEL, PORT, WEBHOOK, ADMINS, REQ_CHANNEL
 from utils import temp, __repo__, __license__, __copyright__
 from typing import Union, Optional, AsyncGenerator
 from pyrogram import types
@@ -60,6 +60,11 @@ class Bot(Client):
             await web.TCPSite(app, bind_address, PORT).start()
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         #started_telethroid() # installation Telethroid Library   
+        try:
+            m = await self.send_message(chat_id=REQ_CHANNEL, text="Test")
+            await m.delete()
+        except:
+            self.send_message(chat_id=ADMINS, text="CHACK REQ_CHANNEL can't create a link")
         if LOG_CHANNEL:
             try:
                 await self.send_message(LOG_CHANNEL, text=f"<b>{me.mention} Iꜱ Rᴇsᴛᴀʀᴛᴇᴅ !!\n\n📅 Dᴀᴛᴇ : <code>{date}</code>\n⏰ Tɪᴍᴇ : <code>{time}</code>\n🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>{TIMEZONE}</code>\n\n🉐 Vᴇʀsɪᴏɴ : <code>v{__version__} (Layer {layer})</code></b>")  # Repo : {__repo__}\n Copyright : {__copyright__}           
