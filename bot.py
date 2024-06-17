@@ -62,14 +62,6 @@ class Bot(Client):
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         #started_telethroid() # installation Telethroid Library   
 
-        if REQ_CHANNEL:
-            try:
-                asyncio.sleep(1)
-                await self.send_message(-1002235467765, text=f"for channel link tast")         
-            except Unauthorized:             
-                LOGGER.warning("Bot isn't able to send message to REQ_CHANNEL")
-            except BadRequest as e:
-                LOGGER.error(e)
         if LOG_CHANNEL:
             try:
                 await self.send_message(LOG_CHANNEL, text=f"<b>{me.mention} Iꜱ Rᴇsᴛᴀʀᴛᴇᴅ !!\n\n📅 Dᴀᴛᴇ : <code>{date}</code>\n⏰ Tɪᴍᴇ : <code>{time}</code>\n🌐 Tɪᴍᴇᴢᴏɴᴇ : <code>{TIMEZONE}</code>\n\n🉐 Vᴇʀsɪᴏɴ : <code>v{__version__} (Layer {layer})</code></b>")  # Repo : {__repo__}\n Copyright : {__copyright__}           
