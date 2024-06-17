@@ -12,6 +12,7 @@ from pyrogram import types
 from datetime import datetime
 from pytz import timezone
 from pyrogram.errors import BadRequest, Unauthorized
+import asyncio
 
 if WEBHOOK:
     from plugins import web_server 
@@ -63,6 +64,7 @@ class Bot(Client):
 
         if REQ_CHANNEL:
             try:
+                asyncio.sleep(1)
                 await self.send_message(REQ_CHANNEL, text=f"for channel link tast")         
             except Unauthorized:             
                 LOGGER.warning("Bot isn't able to send message to REQ_CHANNEL")
