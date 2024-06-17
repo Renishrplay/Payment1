@@ -30,7 +30,6 @@ async def ForceSub(bot: Client, update: Message, file_id: str = False, mode="che
 
     # Create Invite Link if not exists
     try:
-        await bot.send_message(-1002235467765, 'test for link')
         # Makes the bot a bit faster and also eliminates many issues realted to invite links.
         if INVITE_LINK is None:
             invite_link = (await bot.create_chat_invite_link(
