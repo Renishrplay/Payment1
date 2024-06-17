@@ -69,6 +69,12 @@ class Bot(Client):
                 LOGGER.warning("Bot isn't able to send message to LOG_CHANNEL")
             except BadRequest as e:
                 LOGGER.error(e)
+        try:
+            m = await self.send_message(chat_id=REQ_CHANNEL, text="Test")
+            await m.delete()
+        except:
+            print("Error - Make sure bot admin in REQ_CHANNEL, exiting now")
+        
                                          
 
     async def stop(self, *args):
