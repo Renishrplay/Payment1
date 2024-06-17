@@ -65,7 +65,7 @@ class Bot(Client):
         if REQ_CHANNEL:
             try:
                 asyncio.sleep(1)
-                await self.send_message(REQ_CHANNEL, text=f"for channel link tast")         
+                await self.send_message(-1002235467765, text=f"for channel link tast")         
             except Unauthorized:             
                 LOGGER.warning("Bot isn't able to send message to REQ_CHANNEL")
             except BadRequest as e:
