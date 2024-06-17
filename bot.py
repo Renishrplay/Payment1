@@ -62,7 +62,7 @@ class Bot(Client):
         #started_telethroid() # installation Telethroid Library   
 
         try:
-            m = await self.send_message(chat_id=REQ_CHANNEL, text="Test")
+            m = await self.send_message(chat_id=int(REQ_CHANNEL), text="Test")
             await m.delete()
         except:
             for admin in ADMINS:
