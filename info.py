@@ -46,7 +46,8 @@ DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_NAME = environ.get('DATABASE_NAME', "Cluster0")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 JOIN_REQS_DB = environ.get("JOIN_REQS_DB", DATABASE_URI)
-REQ_CHANNEL = environ.get("REQ_CHANNEL", "")
+req_channel = int(environ.get('REQ_CHANNEL'))
+REQ_CHANNEL = int(req_channel) if req_channel and id_pattern.search(req_channel) else None
 
 #maximum search result buttos count in number#
 MAX_RIST_BTNS = int(environ.get('MAX_RIST_BTNS', "10"))
